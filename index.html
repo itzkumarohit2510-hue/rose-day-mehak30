@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Rose Day Mehak ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+body{background:linear-gradient(to bottom,#ffccd5,#fff0f3);overflow:hidden}
+
+/* LOGIN */
+.login{height:100vh;display:flex;justify-content:center;align-items:center}
+.box{background:#fff;width:90%;max-width:320px;padding:25px;border-radius:16px;
+box-shadow:0 20px 40px rgba(0,0,0,.2);text-align:center}
+.box h2{color:#c9184a;margin-bottom:15px}
+.box input{width:100%;padding:12px;margin:8px 0;border-radius:8px;border:1px solid #ccc}
+.box button{width:100%;padding:12px;border:none;border-radius:8px;
+background:#c9184a;color:#fff;font-size:16px}
+.error{color:red;margin-top:10px;display:none}
+
+/* MAIN */
+.main{display:none;height:100vh;padding:20px;text-align:center;position:relative}
+.rose{width:260px;height:260px;border-radius:50%;
+background:radial-gradient(circle,#ff4d6d,#a4133c);
+display:flex;justify-content:center;align-items:center;
+margin:30px auto 15px;box-shadow:0 20px 40px rgba(0,0,0,.4)}
+.rose img{width:190px;height:190px;border-radius:50%;
+border:6px solid #fff;object-fit:cover}
+
+h1{color:#a4133c;margin:10px 0}
+.type{font-size:17px;color:#4a0404;min-height:90px;padding:10px}
+.love{font-size:22px;color:#c9184a;font-weight:bold;margin-top:20px}
+
+/* MUSIC */
+.music{position:fixed;bottom:15px;right:15px;
+background:#c9184a;color:#fff;padding:12px 14px;border-radius:50%;font-size:18px}
+
+/* FALLING ROSES */
+.rose-fall{position:fixed;top:-50px;font-size:24px;
+animation:fall linear infinite}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+</style>
+</head>
+
+<body>
+
+<div class="login" id="login">
+<div class="box">
+<h2>💖 Love Protected 💖</h2>
+<input id="u" placeholder="Username">
+<input id="p" type="password" placeholder="Password">
+<button onclick="go()">Open My Heart ❤️</button>
+<div class="error" id="e">Wrong Credentials</div>
+</div>
+</div>
+
+<div class="main" id="main">
+<div class="rose">
+<img src="us.jpg">
+</div>
+
+<h1>🌹 Happy Rose Day 🌹</h1>
+<div class="type" id="text"></div>
+
+<div class="love">
+I Love You Mehak ❤️<br>
+You are the best 💫<br>
+Happy Rose Day My Love 🌹
+</div>
+
+<button class="music" onclick="toggle()">🎶</button>
+<audio id="song" loop>
+<source src="love.mp3">
+</audio>
+</div>
+
+<script>
+function go(){
+if(u.value==="Rohit Loves Mehak" && p.value==="302518"){
+login.style.display="none";
+main.style.display="block";
+song.play(); type(); rain();
+} else e.style.display="block";
+}
+
+let msg="Mehak, this rose carries all my love for you 🌹\nEvery smile of yours makes my world brighter ✨\nYou are my today, my tomorrow, and my forever ❤️";
+let i=0;
+function type(){
+if(i<msg.length){
+text.innerHTML+=msg[i]==="\n"?"<br>":msg[i];
+i++; setTimeout(type,50);
+}
+}
+
+function toggle(){song.paused?song.play():song.pause();}
+
+function rain(){
+setInterval(()=>{
+let r=document.createElement("div");
+r.className="rose-fall";
+r.innerHTML="🌹";
+r.style.left=Math.random()*100+"vw";
+r.style.animationDuration=3+Math.random()*3+"s";
+document.body.appendChild(r);
+setTimeout(()=>r.remove(),6000);
+},300);
+}
+</script>
+
+</body>
+</html>
